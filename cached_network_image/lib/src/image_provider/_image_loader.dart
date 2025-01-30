@@ -132,7 +132,7 @@ class ImageLoader implements platform.ImageLoader {
       scheduleMicrotask(() {
         evictImage();
       });
-      yield* Stream.error(error, stackTrace);
+      //yield* Stream.error(error, stackTrace);
     } finally {
       await chunkEvents.close();
     }
