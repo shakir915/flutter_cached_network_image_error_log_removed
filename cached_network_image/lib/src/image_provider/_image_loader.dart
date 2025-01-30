@@ -2,6 +2,7 @@ import 'dart:async';
 import 'dart:typed_data';
 import 'dart:ui' as ui;
 import 'dart:ui';
+import 'package:flutter/foundation.dart';
 
 import 'package:cached_network_image_platform_interface/cached_network_image_platform_interface.dart';
 import 'package:cached_network_image_platform_interface'
@@ -132,7 +133,10 @@ class ImageLoader implements platform.ImageLoader {
       scheduleMicrotask(() {
         evictImage();
       });
-      //yield* Stream.error(error, stackTrace);
+       if(kDebugMode){
+                 yield* Stream.error(error, stackTrace);
+                 }
+     
     } finally {
       await chunkEvents.close();
     }
